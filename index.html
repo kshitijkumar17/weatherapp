@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App | JS</title>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,18 +13,25 @@
         <div class="app-title">
             <p>Weather</p>
         </div>
+
+        <!-- Search Bar -->
+        <div class="search">
+            <input class="search-bar" type="text" placeholder="Search for a city">
+            <i class="uil uil-search search-icon"></i>
+        </div>
+
         <div class="notification"></div>
         <div class="weather-container">
-            <div class="weather-icon">
+            <div class="weather-icon" id="weatherIcon">
                 <img src="icons/unknown.png">
             </div>
-            <div class="temperature-value">
+            <div class="temperature-value" id="tempValue">
                 <p>- ° <span>C</span></p>
             </div>
-            <div class="temperature-description">
+            <div class="temperature-description" id="tempDesc">
                 <p>-</p>
             </div>
-            <div class="location">
+            <div class="location" id="tempLocation">
                 <p>-</p>
             </div>
         </div>

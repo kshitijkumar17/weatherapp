@@ -51,6 +51,7 @@ body{
 .weather-icon{
     width: 300px;
     height: 128px;
+    display: none;
 }
 .weather-icon img{
     display: block;
@@ -60,6 +61,7 @@ body{
     width: 300px;
     height: 60px;
     margin-bottom: 16px;
+    display: none;
 }
 .temperature-value p{
     padding: 0;
@@ -76,6 +78,7 @@ body{
     margin: 0;
     text-align: center;
     font-size: 1.2em;
+    display: none;
 }
 .location{
     margin: 0;
@@ -83,4 +86,33 @@ body{
     text-align: center;
     font-size: 0.9em;
     font-weight: 600;
+    display: none;
+}
+
+
+/* ----Search Bar----  */
+.search{
+    width: 260px;
+    padding: 5px;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15),
+            -6px -6px 10px -1px rgba(255,255,255,0.7);
+}
+.search-bar{
+    background-color: transparent;
+    width: 200px;
+    outline: none;
+    border: none;
+    padding: 10px;
+    
+}
+.search-icon{
+    font-size: 1.25em;
+    font-weight: 500;
+    cursor: pointer;
 }

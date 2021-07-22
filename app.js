@@ -7,6 +7,11 @@ const descElement = document.querySelector('.temperature-description');
 const locationElement = document.querySelector('.location p');
 const notificationElement = document.querySelector('.notification');
 
+const weatherIcon = document.getElementById("weatherIcon");
+const tempValue = document.getElementById("tempValue");
+const tempDesc = document.getElementById("tempDesc");
+const tempLocation = document.getElementById("tempLocation");
+
 const weather = {};
 weather.temperature = {
     unit: 'celsius'
@@ -15,34 +20,31 @@ weather.temperature = {
 const KELVIN = 273;
 const key = '72cfa2bbd2fc81a3d59a12588251c8e8';
 
-if('geolocation' in navigator){
-    navigator.geolocation.getCurrentPosition(setPosition, showError);
-} else{
-    notificationElement.style.display = 'block';
-    notificationElement.innerHTML = "<p>Browser doesn't support Geolocalization";
+//Display weather
+function displayWeather(){
+    iconElement.innerHTML = `<img src="icons/${weather.iconId}.png"/>`;
+    tempElement.innerHTML = `${weather.temperature.value}° <span>C</span>`;
+    descElement.innerHTML = weather.description;
+    locationElement.innerHTML = `${weather.city}, ${weather.country}`;
 }
 
-function setPosition(position){
-    let latitude = position.coords.latitude;
-    let longitude = position.coords.longitude;
+// ----------- SEARCH ---------------
+var button = document.querySelector('.search-icon');
 
-    getWeather(latitude, longitude);
-}
-
-function showError(error){
-    notificationElement.style.display = 'block';
-    notificationElement.innerHTML = `<p>${error.message}`;
-}
-
-//Get weather from API provider
-function getWeather(latitude, longitude){
-    let api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
+button.addEventListener('click', function(){
+    var inputValue = document.querySelector('.search-bar');
+    let api = `https://api.openweathermap.org/data/2.5/weather?q=`+inputValue.value+`&appid=${key}`;
     console.log(api);
+    console.log(inputValue);
+    weatherIcon.style.display = "block";
+    tempValue.style.display = "block";
+    tempDesc.style.display = "block";
+    tempLocation.style.display = "block";
 
     fetch(api)
     .then(function(response){
-        let data = response.json();
-        return data;
+    let data = response.json();
+    return data;
     })
     .then(function(data){
         weather.temperature.value = Math.floor(data.main.temp - KELVIN);
@@ -54,12 +56,4 @@ function getWeather(latitude, longitude){
     .then(function(){
         displayWeather();
     });
-}
-
-//Display weather
-function displayWeather(){
-    iconElement.innerHTML = `<img src="icons/${weather.iconId}.png"/>`;
-    tempElement.innerHTML = `${weather.temperature.value}° <span>C</span>`;
-    descElement.innerHTML = weather.description;
-    locationElement.innerHTML = `${weather.city}, ${weather.country}`;
-}
+});
