@@ -1,3 +1,5 @@
+//test api = 96f6ba150dbfde1782395bffef95d6a2
+
 const iconElement = document.querySelector('.weather-icon');
 const tempElement = document.querySelector('.temperature-value p');
 const descElement = document.querySelector('.temperature-description');
@@ -10,7 +12,7 @@ weather.temperature = {
 };
 
 const KELVIN = 273;
-const key = '96f6ba150dbfde1782395bffef95d6a2';
+const key = '72cfa2bbd2fc81a3d59a12588251c8e8';
 
 if('geolocation' in navigator){
     navigator.geolocation.getCurrentPosition(setPosition, showError);
@@ -33,7 +35,7 @@ function showError(error){
 
 //Get weather from API provider
 function getWeather(latitude, longitude){
-    let api = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
+    let api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
     console.log(api);
 
     fetch(api)
