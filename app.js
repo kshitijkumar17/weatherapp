@@ -1,4 +1,5 @@
 //test api = 96f6ba150dbfde1782395bffef95d6a2
+//my api = 72cfa2bbd2fc81a3d59a12588251c8e8
 
 const iconElement = document.querySelector('.weather-icon');
 const tempElement = document.querySelector('.temperature-value p');
@@ -12,7 +13,7 @@ weather.temperature = {
 };
 
 const KELVIN = 273;
-const key = '72cfa2bbd2fc81a3d59a12588251c8e8';
+const key = '96f6ba150dbfde1782395bffef95d6a2';
 
 if('geolocation' in navigator){
     navigator.geolocation.getCurrentPosition(setPosition, showError);
