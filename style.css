@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+* {
+    box-sizing: border-box;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    background: #f0f3ff;
+}
+.container{
+    width: 300px;
+    background: #f0f3ff;
+    display: block;
+    margin: 0 auto;
+    margin-top: 100px;
+    padding-bottom: 70px;
+    padding-top: 20px;
+    border-radius: 20px;
+    box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15),
+            -6px -6px 10px -1px rgba(255,255,255,0.7);
+}
+.app-title{
+    width: 300px;
+    height: 50px;
+    border-radius: 10px 10px 0 0;
+}
+.app-title p{
+    text-transform: uppercase;
+    text-align: center;
+    padding: 15px;
+    margin: 0 auto;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+.notification{
+    margin-top: 10px;
+    background-color: rgb(180, 110, 110);
+    display: none;
+}
+.notification p{
+    color: #fff;
+    font-size: 1.2em;
+    margin: 0;
+    text-align: center;
+    padding: 10px 0;
+}
+.weather-container{
+    width: 300px;
+    height: 260px;
+}
+.weather-icon{
+    width: 300px;
+    height: 128px;
+}
+.weather-icon img{
+    display: block;
+    margin: 0 auto;
+}
+.temperature-value{
+    width: 300px;
+    height: 60px;
+    margin-bottom: 16px;
+}
+.temperature-value p{
+    padding: 0;
+    margin: 0;
+    font-size: 4em;
+    text-align: center;
+    font-weight: 700;
+}
+.temperature-value span{
+    font-size: 0.5em;
+}
+.temperature-description{
+    padding: 8px;
+    margin: 0;
+    text-align: center;
+    font-size: 1.2em;
+}
+.location{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 0.9em;
+    font-weight: 600;
+}
