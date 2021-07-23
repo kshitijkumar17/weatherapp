@@ -22,9 +22,16 @@ const key = '72cfa2bbd2fc81a3d59a12588251c8e8';
 
 // ----------- SEARCH ---------------
 var button = document.querySelector('.search-icon');
+var inputValue = document.querySelector('.search-bar');
+
+inputValue.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+      button.click();
+      document.activeElement.blur();
+    }
+});
 
 button.addEventListener('click', function(){
-    var inputValue = document.querySelector('.search-bar');
     let api = `https://api.openweathermap.org/data/2.5/weather?q=`+inputValue.value+`&appid=${key}`;
     console.log(api);
     console.log(inputValue);
