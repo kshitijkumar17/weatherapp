@@ -20,14 +20,6 @@ weather.temperature = {
 const KELVIN = 273;
 const key = '72cfa2bbd2fc81a3d59a12588251c8e8';
 
-//Display weather
-function displayWeather(){
-    iconElement.innerHTML = `<img src="icons/${weather.iconId}.png"/>`;
-    tempElement.innerHTML = `${weather.temperature.value}° <span>C</span>`;
-    descElement.innerHTML = weather.description;
-    locationElement.innerHTML = `${weather.city}, ${weather.country}`;
-}
-
 // ----------- SEARCH ---------------
 var button = document.querySelector('.search-icon');
 
@@ -36,10 +28,6 @@ button.addEventListener('click', function(){
     let api = `https://api.openweathermap.org/data/2.5/weather?q=`+inputValue.value+`&appid=${key}`;
     console.log(api);
     console.log(inputValue);
-    weatherIcon.style.display = "block";
-    tempValue.style.display = "block";
-    tempDesc.style.display = "block";
-    tempLocation.style.display = "block";
 
     fetch(api)
     .then(function(response){
@@ -47,13 +35,31 @@ button.addEventListener('click', function(){
     return data;
     })
     .then(function(data){
+        console.log(data.cod);
+        if(data.cod === '404'){
+            notificationElement.innerHTML = `<p>${data.message}`;
+            notificationElement.style.display = 'block';
+            iconElement.innerHTML = ``;
+            tempElement.innerHTML = ``;
+            descElement.innerHTML = ``;
+            locationElement.innerHTML = ``;
+        } else{
         weather.temperature.value = Math.floor(data.main.temp - KELVIN);
         weather.description = data.weather[0].description;
         weather.iconId = data.weather[0].icon;
         weather.city = data.name;
         weather.country = data.sys.country;
-    })
-    .then(function(){
-        displayWeather();
+
+        weatherIcon.style.display = "block";
+        tempValue.style.display = "block";
+        tempDesc.style.display = "block";
+        tempLocation.style.display = "block";
+        notificationElement.style.display = 'none';
+
+        iconElement.innerHTML = `<img src="icons/${weather.iconId}.png"/>`;
+        tempElement.innerHTML = `${weather.temperature.value}° <span>C</span>`;
+        descElement.innerHTML = weather.description;
+        locationElement.innerHTML = `${weather.city}, ${weather.country}`;
+        }
     });
 });
